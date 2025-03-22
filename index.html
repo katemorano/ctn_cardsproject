@@ -1,29 +1,147 @@
-<!doctype html>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-
+<!DOCTYPE html>
 <title> this is my cards project </title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<h1> Top grossing films of 2024 </h1>
 
-<h1> Top Shows of 2024 </h1>
 
-<div class="card1">
-    <h2> The Night Agent </h2>
-        <div class="nightAgentPic">
-            <img src= "nightAgentPic.jpg">
-        </div>
-    <div class="NAstats">
-        <div class="NAlefties">
-            <h4> SERVICE </h4>
-            <h4> YEAR PREMIERED </h4>
-            <h4> GENRE </h4>
-            <h4> WATCHTIME </h4>
-        </div>
-        <div class="NArighties">
-            <h4> Netflix</h4>
-            <h4> 2023 </h4>
-            <h4> Action </h4>
-            <h4> 812.1M </h4>
-        </div>
+<div class="insideOut2 disney">
+<h2> Inside Out 2 </h2>
+    <div class="insideOutPic">
+        <img src= "insideOutPic.jpg">
     </div>
-    <h6> Photo Credit: Netflix </h6>
+<h6> Credit: Disney </h6>
+<h4> This family film from <mark class="IOspecial"> Disney </mark> grossed <mark class="IOspecial"> $1.6 billion </mark> worldwide. </h4>
 </div>
+
+<div class="deadpool marvel">
+    <h2> Deadpool & Wolverine </h2>
+        <div class="deadpoolPic">
+            <img src="deadpoolPic.jpg">
+        </div>
+    <h6>Credit: Marvel Studios </h6>
+    <h4> This action/comedy film from <mark class="deadpoolSpecial"> Marvel Studios </mark> grossed <mark class="deadpoolSpecial"> $1.3 billion </mark> worldwide. </h4>
+</div>
+
+<div class="moana2 disney">
+    <h2> Moana 2 </h2>
+        <div class="moanaPic">
+            <img src="moanaPic.webp">
+        </div>
+    <h6> Credit: Disney </h6>
+    <h4> This family film from <mark class="M2special"> Disney </mark> grossed <mark class="M2special"> $1 billion</mark> worldwide. </h4>
+</div>
+
+<div class="despicableMe universal">
+    <h2> Despicable Me 4 </h2>
+        <div class="despicableMePic">
+            <img src="despicableMePic.jpg">
+        </div>
+    <h6> Credit: Universal Studios </h6>
+    <h4> This family comedy from <mark class="DPspecial"> Universal Studios </mark> grossed <mark class="DPspecial"> $969.1 million </mark> worldwide. </h4>
+</div>
+
+<div class="wicked universal">
+    <h2> Wicked </h2>
+        <div class="wickedPic">
+            <img src="wickedPic.jpg">
+        </div>
+    <h6> Credit: Universal Studios </h6>
+    <h4> This fantasy musical from <mark class="Wspecial"> Universal Studios </mark> grossed <mark class="Wspecial"> $739.6 million </mark> worldwide. </h4>
+</div>
+
+ <div class="mufasa disney">
+    <h2> Mufasa: The Lion King </h2>
+         <div class="mufasaPic">
+             <img src="mufasaPic.jpg">
+        </div>
+    <h6> Credit: Disney </h6>
+    <h4> This family adventure film from <mark class="Mufasaspecial"> Disney </mark> grossed <mark class="Mufasaspecial"> $717.2 million </mark> worldwide. </h4>
+</div>
+
+<div class="dune2 warner">
+    <h2> Dune Part Two </h2>
+         <div class="dune2Pic">
+             <img src="dune2Pic.jpg">
+        </div>
+    <h6> Credit: Warner Bros. </h6>
+    <h4> This sci-fi/adventure film from <mark class="dunespecial"> Warner Bros. </mark> grossed <mark class="dunespecial"> $714.6 million </mark> worldwide. </h4>
+</div>
+
+<div class="godzilla warner">
+    <h2> Godzilla x King: The New Empire </h2>
+         <div class="godzillaPic">
+             <img src="godzillaPic.webp">
+        </div>
+    <h6> Credit: Warner Bros. </h6>
+    <h4> This sci-fi/action film from <mark class="Gspecial"> Warner Bros. </mark> grossed <mark class="Gspecial"> $571.9 million </mark> worldwide. </h4>
+</div>
+
+<h1> AND NOW... we attempt to create a loop </head>
+
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+        //here i shall enter my data
+       const filmData = [
+        {
+            title: "Inside Out 2",
+            studio: "Disney",
+            gross: "$1.6 billion"
+        },
+        {
+            title: "Deadpool & Wolverine",
+            studio: "Marvel",
+            gross: "$1.3 billion"
+        },
+        {
+            title: "Moana 2",
+            studio: "Disney",
+            gross: "$1 billion"
+        },
+        {
+            title: "Despicable Me 4",
+            studio: "Universal",
+            gross: "$969.1 million"
+        },
+        {
+            title: "Wicked",
+            studio: "Universal",
+            gross: "$739.6 million"
+        },
+        {
+            title: "Mufasa: The Lion King",
+            studio: "Disney",
+            gross: "$717.2 million"
+        },
+        {
+            title: "Dune Part 2",
+            studio: "Warner Bros.",
+            gross: "$714.6 million"
+        },
+        {
+            title: "Godzilla x Kong: The New Empire",
+            studio: "Warner Bros.",
+            gross: "571.9 million"
+        }
+       ]
+     console.log(filmData)
+
+     for (let title = 0; title < 2; title++){
+        console.log("Inside Out 2");
+        console.log("Deadpool & Wolverine");
+        console.log("Moana 2");
+        console.log("Despicable Me 4");
+        console.log("Wicked");
+        console.log("Mufasa:The Lion King");
+        console.log("Dune Part Two");
+        console.log("Godzilla x Kong: The New Empire");
+     }
+
+     let disney_cards = document.getElementsByClassName('disney');
+
+     for (let index = 0; index < disney_cards.length; index++) {
+        disney_cards[index].style.borderBottom = '10px solid blue';
+     }
+     
+    </script>
