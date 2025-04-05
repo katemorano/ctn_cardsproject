@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript: Document Object Model</title>
+
+    <h1> TOP GROSSING FILMS OF 2024 </h1>
+
+    <div id="button-container">
+        <button id="all" value="all">All films</button>
+        <button id="over1bil" value="over1bil"> Films grossing over $1 billion</button>
+        <button id="releasedSummer" value="releasedSummer">Films released in the Summer</button>
+    </div>  
+
+    <style>
+            html{
+            background-color: #E5D0AC;
+            max-width: 1000px;
+           }
+
+           h1{
+            text-align: center;
+           }
+
+           h2{
+            color: #FEF9E1;
+            font-style: oblique;
+           }
+
+           p{
+            color:#FEF9E1;
+           }
+
+           #container > div.filmCards {
+                width: 200px;
+                height: 250px;
+                background-color: #FF9D23;
+                border: 5px solid #FF9D23;
+                padding: 10px;
+                flex: wrap;
+                text-align: center;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                
+            }
+
+            #container {
+                display:flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding-top: 50px;
+                align-items: center;
+            }
+
+            #button-container{
+                padding-bottom: 50px;
+                text-align: center;
+            }
+
+            button {
+                padding: 10px 10px;
+                border-radius: 7px;
+                border: 2px solid black;
+                background-color: #FEF9E1;
+            }
+
+            .hover {
+                background-color: #FF9D23;
+                color: #fff;
+                border: 1px solid #fff;
+                cursor: pointer;
+            }
+
+            .clicked {
+                background-color: #C14600;
+                color: #fff;
+                border: 1px solid #fff;
+                cursor: pointer; 
+            }
+
+    </style>
+</head>
+
+    <div id="container"> </div>
+
+     <script>
+
+        const films = [
+        {
+            title: "Inside Out 2",
+            studio: "Walt Disney Studios",
+            releaseDate: "June 14, 2024",
+            gross: "$1.6 billion",
+            isOneBil: true,
+            summerFilm: true
+        },
+        {
+            title: "Deadpool & Wolverine",
+            studio: "Walt Disney Studios",
+            releaseDate: "July 26, 2024",
+            gross: "$1.3 billion",
+            isOneBil: true,
+            summerFilm: true
+        },
+        {
+            title: "Moana 2",
+            studio: "Walt Disney Studios",
+            releaseDate: "November 27, 2024",
+            gross: "$1 billion",
+            isOneBil: true,
+            summerFilm: false
+        },
+        {
+            title: "Despicable Me 4",
+            studio: "Universal Studios",
+            releaseDate: "July 3, 2024",
+            gross: "$969.1 million",
+            isOneBil: false,
+            summerFilm: true
+        },
+        {
+            title: "Wicked",
+            studio: "Universal Studios",
+            releaseDate: "November 22, 2024",
+            gross: "$739.6 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Mufasa: The Lion King",
+            studio: "Walt Disney Studios",
+            releaseDate: "December 20, 2024",
+            gross: "$717.2 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Dune Part 2",
+            studio: "Warner Bros. Pictures",
+            releaseDate: "March 1, 2024",
+            gross: "$714.6 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Godzilla x Kong: The New Empire",
+            studio: "Warner Bros. Pictures",
+            releaseDate: "March 29, 2024",
+            gross: "$571.9 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Kung Fu Panda 4",
+            studio: "Universal Studios",
+            releaseDate: "March 8, 2024",
+            gross: "$547.7 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Sonic the Hedgehog 3",
+            studio: "Paramount Pictures",
+            releaseDate: "December 20, 2024",
+            gross: "$491.1 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Venom: The Last Dance",
+            studio: "Sony Pictures",
+            releaseDate: "October 25, 2024",
+            gross: "$478.9 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Gladiator II",
+            studio: "Paramount Pictures",
+            releaseDate: "November 22, 2024",
+            gross: "$462.2 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Beetlejuice Beetlejuice",
+            studio: "Warner Bros. Pictures",
+            releaseDate: "September 6, 2024",
+            gross: "$451.9 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "YOLO",
+            studio: "New Century Pictures",
+            releaseDate: "March 8, 2024",
+            gross: "$433.6 million",
+            isOneBil: false,
+            summerFilm: false
+        },
+        {
+            title: "Pegasus 2",
+            studio: "Multiple Studios",
+            releaseDate: "February 10, 2024",
+            gross: "$422.9 million",
+            isOneBil: false,
+            summerFilm: false
+        }
+        ];
+
+        let container = document.getElementById('container');
+
+        function makeCards(title, studio, gross, isOneBil, releaseDate, summerFilm){
+        let elementDiv = document.createElement('div');
+
+            if (isOneBil){
+            elementDiv.setAttribute('data-isOneBil', 'over1bil');
+            }
+            else {
+            elementDiv.setAttribute('data-isOneBil', 'not1bil');
+            };
+
+            if (summerFilm){
+                elementDiv.setAttribute('data-summerFilm', 'releasedSummer');
+            }
+            else{
+                elementDiv.setAttribute('data-summerFilm', 'notReleasedSummer')
+            }
+
+         elementDiv.classList.add('filmCards');
+        let cardText = `<h2>${title}</h2><p>${studio}</p><p>Grossed ${gross} worldwide</p><p>Released in the U.S. ${releaseDate}`;
+        elementDiv.innerHTML = cardText;
+        container.append(elementDiv);
+    }
+
+    films.forEach(function(c){
+        makeCards(c.title, c.studio, c.gross, c.isOneBil, c.releaseDate, c.summerFilm);
+    })
+
+    let allButtons = document.querySelectorAll('button')
+    let cards = document.querySelectorAll('.filmCards');
+
+        allButtons.forEach(function(btn) {
+            btn.addEventListener('mouseenter',function(){
+                this.classList.add('hover');
+        });
+            btn.addEventListener('mouseleave',function(){
+                this.classList.remove('hover');
+        });
+        });
+
+        allButtons.forEach(function(btn){
+            btn.addEventListener('click',function(){
+                allButtons.forEach(btn_inside => {
+                    btn_inside.classList.remove('clicked');
+                    this.classList.add('clicked')
+                    const filter = this.value;
+                })
+            })
+        })
+
+        allButtons.forEach(function(btn){
+            btn.addEventListener('click',function(){
+
+                let button_value = this.value;
+
+                cards.forEach(function(card){
+                    if (button_value == 'all'){
+                        card.style.display = 'block';
+                    }
+                    else
+                    
+                    if (card.getAttribute('data-isOneBil') == button_value){
+                        card.style.display = 'block';
+                    }
+                    else{
+                        card.style.display = 'none';
+                    }
+                })
+                
+                if (card.getAttribute('data-summerFilm') == button_value){
+                        card.style.display = 'block';
+                    }
+                    else{
+                        card.style.display = 'none';
+                    }
+
+            })
+        })
+
+
+     </script>
+</html>
