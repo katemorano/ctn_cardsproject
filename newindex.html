@@ -9,34 +9,38 @@
 
     <div id="button-container">
         <button id="all" value="all">All films</button>
-        <button id="over1bil" value="over1bil"> Films grossing over $1 billion</button>
-        <button id="releasedSummer" value="releasedSummer">Films released in the Summer</button>
+        <button id="over1bil" value="over1bil"> Films grossing over $1 billion </button>
+        <button id="not1bil" value="not1bil">Films grossing less than $1 billion </button>
     </div>  
 
     <style>
             html{
-            background-color: #E5D0AC;
-            max-width: 1000px;
+            background-color: #846267;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 25px
            }
 
            h1{
             text-align: center;
+            color: white;
            }
 
            h2{
-            color: #FEF9E1;
+            color: white;
             font-style: oblique;
            }
 
            p{
-            color:#FEF9E1;
+            color:white;
            }
 
            #container > div.filmCards {
                 width: 200px;
                 height: 250px;
-                background-color: #FF9D23;
-                border: 5px solid #FF9D23;
+                background-color: #C37D92;
+                border: 5px solid #C37D92;
                 padding: 10px;
                 flex: wrap;
                 text-align: center;
@@ -49,7 +53,8 @@
                 flex-wrap: wrap;
                 gap: 10px;
                 padding-top: 50px;
-                align-items: center;
+                justify-content: center;
+                align-items: center
             }
 
             #button-container{
@@ -60,19 +65,19 @@
             button {
                 padding: 10px 10px;
                 border-radius: 7px;
-                border: 2px solid black;
-                background-color: #FEF9E1;
+                border: 2px solid white;
+                background-color: #E9EBF8;
             }
 
             .hover {
-                background-color: #FF9D23;
+                background-color: #E0C1B3;
                 color: #fff;
                 border: 1px solid #fff;
                 cursor: pointer;
             }
 
             .clicked {
-                background-color: #C14600;
+                background-color: #D89A9E;
                 color: #fff;
                 border: 1px solid #fff;
                 cursor: pointer; 
@@ -81,7 +86,7 @@
     </style>
 </head>
 
-    <div id="container"> </div>
+    <div id="container">
 
      <script>
 
@@ -92,7 +97,6 @@
             releaseDate: "June 14, 2024",
             gross: "$1.6 billion",
             isOneBil: true,
-            summerFilm: true
         },
         {
             title: "Deadpool & Wolverine",
@@ -100,7 +104,6 @@
             releaseDate: "July 26, 2024",
             gross: "$1.3 billion",
             isOneBil: true,
-            summerFilm: true
         },
         {
             title: "Moana 2",
@@ -108,7 +111,6 @@
             releaseDate: "November 27, 2024",
             gross: "$1 billion",
             isOneBil: true,
-            summerFilm: false
         },
         {
             title: "Despicable Me 4",
@@ -116,7 +118,6 @@
             releaseDate: "July 3, 2024",
             gross: "$969.1 million",
             isOneBil: false,
-            summerFilm: true
         },
         {
             title: "Wicked",
@@ -124,7 +125,6 @@
             releaseDate: "November 22, 2024",
             gross: "$739.6 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Mufasa: The Lion King",
@@ -132,7 +132,6 @@
             releaseDate: "December 20, 2024",
             gross: "$717.2 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Dune Part 2",
@@ -140,7 +139,6 @@
             releaseDate: "March 1, 2024",
             gross: "$714.6 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Godzilla x Kong: The New Empire",
@@ -148,7 +146,6 @@
             releaseDate: "March 29, 2024",
             gross: "$571.9 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Kung Fu Panda 4",
@@ -156,7 +153,6 @@
             releaseDate: "March 8, 2024",
             gross: "$547.7 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Sonic the Hedgehog 3",
@@ -164,7 +160,6 @@
             releaseDate: "December 20, 2024",
             gross: "$491.1 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Venom: The Last Dance",
@@ -172,7 +167,6 @@
             releaseDate: "October 25, 2024",
             gross: "$478.9 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Gladiator II",
@@ -180,7 +174,6 @@
             releaseDate: "November 22, 2024",
             gross: "$462.2 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Beetlejuice Beetlejuice",
@@ -188,7 +181,6 @@
             releaseDate: "September 6, 2024",
             gross: "$451.9 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "YOLO",
@@ -196,7 +188,6 @@
             releaseDate: "March 8, 2024",
             gross: "$433.6 million",
             isOneBil: false,
-            summerFilm: false
         },
         {
             title: "Pegasus 2",
@@ -204,7 +195,6 @@
             releaseDate: "February 10, 2024",
             gross: "$422.9 million",
             isOneBil: false,
-            summerFilm: false
         }
         ];
 
@@ -220,13 +210,6 @@
             elementDiv.setAttribute('data-isOneBil', 'not1bil');
             };
 
-            if (summerFilm){
-                elementDiv.setAttribute('data-summerFilm', 'releasedSummer');
-            }
-            else{
-                elementDiv.setAttribute('data-summerFilm', 'notReleasedSummer')
-            }
-
          elementDiv.classList.add('filmCards');
         let cardText = `<h2>${title}</h2><p>${studio}</p><p>Grossed ${gross} worldwide</p><p>Released in the U.S. ${releaseDate}`;
         elementDiv.innerHTML = cardText;
@@ -234,7 +217,7 @@
     }
 
     films.forEach(function(c){
-        makeCards(c.title, c.studio, c.gross, c.isOneBil, c.releaseDate, c.summerFilm);
+        makeCards(c.title, c.studio, c.gross, c.isOneBil, c.releaseDate);
     })
 
     let allButtons = document.querySelectorAll('button')
@@ -277,17 +260,12 @@
                         card.style.display = 'none';
                     }
                 })
-                
-                if (card.getAttribute('data-summerFilm') == button_value){
-                        card.style.display = 'block';
-                    }
-                    else{
-                        card.style.display = 'none';
-                    }
 
             })
         })
 
 
      </script>
+
+    </div>
 </html>
